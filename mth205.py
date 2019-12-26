@@ -9,6 +9,4 @@ class matrix:
     def eigenvalues(self):
         return LA.eig(self.entries)[0]
 
-A = matrix(2,2,[1,2,2,1])
-print(A.eigenvalues())
                                   
