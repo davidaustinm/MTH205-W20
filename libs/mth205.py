@@ -28,11 +28,18 @@ class matrix:
             self.T = matrix(self.entries.T, False)
             self.T.T = self
 
-    def getcolumns(self, c):
-        if isinstance(c, list):
-            columns = [self.entries[:, col] for col in c]
-            return matrix(np.array(columns).T)
+    def column(self, c):
         return vector(self.entries[:, c])
+    def row(self, r):
+        return vector(self.entries[r, :])
+    def matrix_from_columns(c):
+        columns = [self.entries[:, col] for col in c]
+        return matrix(np.array(columns).T)
+    def matrix_from_rows(r):
+        rows = [self.entries[row, :] for row in r]
+        return matrix(np.array(rows))
+    def matrix_from_rows_and_columns(r, c):
+        return self.matrix_from_rows(r).matrix_from_columns(c)
     def getrows(self, r):
         if isinstance(r, list):
             rows = [self.entries[row, :] for row in r]
