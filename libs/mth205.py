@@ -40,11 +40,6 @@ class matrix:
         return matrix(np.array(rows))
     def matrix_from_rows_and_columns(self, r, c):
         return self.matrix_from_rows(r).matrix_from_columns(c) 
-   def getrows(self, r):
-        if isinstance(r, list):
-            rows = [self.entries[row, :] for row in r]
-            return matrix(np.array(rows))
-        return vector(self.entries[r, :])
     def eigenvalues(self):
         return LA.eig(self.entries)[0]
     def right_eigenmatrix(self):
