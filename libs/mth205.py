@@ -95,7 +95,8 @@ class matrix:
     def display(self, scale=1):
         from matplotlib.colors import LinearSegmentedColormap
         map_colors=[(1,0,0), (0,0,0), (1,1,1)]
-        cm = from matplotlib.colors import LinearSegmentedColormap
+        cm = LinearSegmentedColormap.from_list("my_list", map_colors, N=100)
+
         entries = np.copy(self.entries)
         shape = entries.shape
         max = np.max(np.abs(entries))
