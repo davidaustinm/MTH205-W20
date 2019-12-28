@@ -97,11 +97,11 @@ class matrix:
         shape = entries.shape
         max = np.max(np.abs(entries))
         entries = 1/max*entries
-        fig, ax = plt.subplots(figsize=shape)
-        plt.imshow(entries)
+        fig, ax = plt.subplots(figsize=(shape[0], shape[1]))
+        plt.pcolor(np.flip(entries), vmin=-1, vmax=1)
         ax.set_aspect(1)
-        plt.xticks(range(shape[1]))
-        plt.yticks(range(shape[0]))
+#        plt.xticks(range(shape[1]))
+#        plt.yticks(range(shape[0]))
         plt.colorbar(orientation="vertical")
         plt.show()
         
