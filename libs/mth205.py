@@ -71,12 +71,9 @@ class matrix:
             if pivots[-1] == self.rows - 1:
                 break
         pivots.reverse()
-        print(pivots)
-        print (A)
         rank = len(pivots)
         for i, p in enumerate(pivots):
             row = rank - i - 1
-            print(row, p)
             for j in range(row):
                 A[j] -= A[j,p] * A[row]
                 A[j, np.abs(A[j, :]) < 1e-10] = 0
@@ -109,6 +106,8 @@ class matrix:
         return matrix(s*self.entries)
     def __str__(self):
         return str(self.entries)
+    def __repr__(self):
+        return str(self.entries)
 
     def __xor__(self, n):
         if isinstance(n, int):
@@ -127,6 +126,8 @@ class vector:
     def __init__(self, entries):
         self.entries = np.array(entries)
     def __str__(self):
+        return str(self.entries)
+    def __repr__(self):
         return str(self.entries)
     def __mul__(self, v):
         if isinstance(v, vector):
