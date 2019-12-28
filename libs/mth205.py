@@ -1,5 +1,6 @@
 import numpy as np
 import numpy.linalg as LA
+import matplotlib.pyplot as plt
 
 class matrix:
     def __init__(self, *args):
@@ -90,6 +91,19 @@ class matrix:
 
     def transpose(self):
         return matrix(self.entries.T)
+
+    def display(self):
+        entries = np.copy(self.entries)
+        shape = entries.shape
+        max = np.max(np.abs(entries))
+        entries = 1/max*entries
+        fig, ax = plt.subplots(figsize=shape)
+        plt.imshow(entries)
+        ax.set_aspect(1)
+        plt.xticks(range(shape[1]))
+        plt.yticks(range(shape[0]))
+        plt.colorbar(orientation="vertical")
+        plt.show()
         
     def __add__(self, B):
         if isinstance(B, matrix):
@@ -143,6 +157,8 @@ class vector:
     def dot(self, v):
         if isinstance(v, vector):
             return self.entries.dot(v.entries.T)
+    def display(self):
+        matrix([self]).display()
 
 
 
