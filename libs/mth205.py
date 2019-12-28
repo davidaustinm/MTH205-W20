@@ -32,15 +32,15 @@ class matrix:
         return vector(self.entries[:, c])
     def row(self, r):
         return vector(self.entries[r, :])
-    def matrix_from_columns(c):
+    def matrix_from_columns(self, c):
         columns = [self.entries[:, col] for col in c]
         return matrix(np.array(columns).T)
-    def matrix_from_rows(r):
+    def matrix_from_rows(self, r):
         rows = [self.entries[row, :] for row in r]
         return matrix(np.array(rows))
-    def matrix_from_rows_and_columns(r, c):
-        return self.matrix_from_rows(r).matrix_from_columns(c)
-    def getrows(self, r):
+    def matrix_from_rows_and_columns(self, r, c):
+        return self.matrix_from_rows(r).matrix_from_columns(c) 
+   def getrows(self, r):
         if isinstance(r, list):
             rows = [self.entries[row, :] for row in r]
             return matrix(np.array(rows))
