@@ -92,12 +92,12 @@ class matrix:
     def transpose(self):
         return matrix(self.entries.T)
 
-    def display(self):
+    def display(self, scale=1):
         entries = np.copy(self.entries)
         shape = entries.shape
         max = np.max(np.abs(entries))
         entries = 1/max*entries
-        fig, ax = plt.subplots(figsize=(2*shape[1], 2*shape[0]))
+        fig, ax = plt.subplots(figsize=(scale*shape[1], scale*shape[0]))
         plt.imshow(entries)
         ax.set_aspect(1)
         plt.xticks(range(shape[1]))
