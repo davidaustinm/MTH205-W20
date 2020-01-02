@@ -171,9 +171,12 @@ class vector:
     def display(self):
         matrix([self]).display()
 
-def list_plot(data, color="blue", aspect_ratio=None, size=25):
+def list_plot(data, color="blue", aspect_ratio=None, size=25, dims=None):
     entries = np.array([d.entries for d in data]).T
-    fig, ax = plt.subplots()
+    if dims != None:
+        fig, ax = plt.subplots(figsize=dims)
+    else:
+        fig, ax = plt.subplots()
     if aspect_ratio != None:
         ax.set_aspect(aspect_ratio)
     ax.scatter(x=entries[0], y=entries[1], c=color, s=size)
