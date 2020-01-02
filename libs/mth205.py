@@ -172,7 +172,7 @@ class vector:
         matrix([self]).display()
 
 def list_plot(data, color="blue", aspect_ratio=None, size=25):
-    entries = [d.entries for d in data].T
+    entries = np.array([d.entries for d in data]).T
     fig, ax = plt.subplots()
     if aspect_ratio != None:
         ax.set_aspect(aspect_ratio)
@@ -180,7 +180,7 @@ def list_plot(data, color="blue", aspect_ratio=None, size=25):
 
 def mean(data):
     if isinstance(data[0], vector):
-        entries = [v.entries for v in data].T
+        entries = np.array([v.entries for v in data]).T
         return vector(np.mean(entries, axis=1))
     return np.mean(data)
     
