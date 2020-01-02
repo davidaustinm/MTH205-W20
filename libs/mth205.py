@@ -112,7 +112,10 @@ class matrix:
         plt.colorbar(orientation="vertical")
         plt.clim(-1,1)
         plt.show()
-        
+
+    def lu(self):
+        return map(matrix, LA.lu(self.entries))
+
     def __add__(self, B):
         if isinstance(B, matrix):
             return matrix(self.entries + B.entries)
@@ -167,6 +170,21 @@ class vector:
             return self.entries.dot(v.entries.T)
     def display(self):
         matrix([self]).display()
+
+def list_plot(data, color="blue", aspect_ratio=None, size=25):
+    entries = [d.entries for d in data].T
+    fig, ax = plt.subplots()
+    if aspect_ratio != None:
+        ax.set_aspect(aspect_ratio)
+    ax.scatter(x=entries[0], y=entries[1], c=color, s=size)
+
+def mean(data):
+    if isinstance(data[0], vector):
+        entries = [v.entries for v in data].T
+        return vector(np.mean(entries, axis=1))
+    return np.mean(data)
+    
+
 
 
 
