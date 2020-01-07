@@ -170,6 +170,8 @@ class vector:
             return self.entries.dot(v.entries.T)
     def display(self):
         matrix([self]).display()
+    def demean(self):
+        return vector(self.entries - self.entries.mean())
 
 def list_plot(data, color="blue", aspect_ratio=None, size=25, dims=None):
     entries = np.array([d.entries for d in data]).T
@@ -185,6 +187,8 @@ def mean(data):
     if isinstance(data[0], vector):
         entries = np.array([v.entries for v in data]).T
         return vector(np.mean(entries, axis=1))
+    if isinstance(data, vector):
+        return np.mean(data.entries)
     return np.mean(data)
     
 
