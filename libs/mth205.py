@@ -184,7 +184,7 @@ def list_plot(data, color="blue", aspect_ratio=None, size=25, dims=None):
     ax.scatter(x=entries[0], y=entries[1], c=color, s=size)
 
 def mean(data):
-    if isinstance(data[0], vector):
+    if isinstance(data, list) and isinstance(data[0], vector):
         entries = np.array([v.entries for v in data]).T
         return vector(np.mean(entries, axis=1))
     if isinstance(data, vector):
