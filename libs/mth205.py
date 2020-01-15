@@ -57,7 +57,7 @@ class matrix:
         for p in range(self.cols):  # look for pivot in column i
             row = len(pivots)
             column = A[row:, p]
-            index = np.argmax(column) + row
+            index = np.argmax(np.abs(column)) + row
             if A[index, p] == 0:
                 continue
             pivots.append(p)
@@ -79,6 +79,26 @@ class matrix:
                 A[j] -= A[j,p] * A[row]
                 A[j, np.abs(A[j, :]) < 1e-10] = 0
         return matrix(A)
+
+    def right_kernel(self):
+        tolerance = 1e-14
+        rref = self.rref().entries
+        basic = []
+        for row in rref:
+            if (np.abs(row) > tolerance).any(): 
+                basic.append(np.argwhere(row != 0)[0][0])
+            else:
+                break
+        free = list(set(range(self.cols)).difference(basic))
+        basis = []
+        for f in free:
+            b = np.zeros(self.cols)
+            b[f] = 1
+            col = rref[:, f]
+            for i, c in np.ndenumerate(basic):
+                b[c] = -col[i]
+            basis.append(b)
+        return basis
 
     def inverse(self):
         return matrix(LA.inv(self.entries))
@@ -146,7 +166,7 @@ class matrix:
             for i in range(n):
                 B = A*B
             return B
-            
+
 class vector:
     def __init__(self, entries):
         self.entries = np.array(entries)
@@ -190,8 +210,13 @@ def mean(data):
     if isinstance(data, vector):
         return np.mean(data.entries)
     return np.mean(data)
-    
 
+def onesvec(n):
+    return vector(np.ones(n))
+
+def zerovec(n):
+    return vector(np.zeros(n))
+    
 
 
 
