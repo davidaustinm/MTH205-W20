@@ -195,7 +195,7 @@ class vector:
     def __sub__(self, v):
         return vector(self.entries - v.entries)
     def copy(self):
-        return vector(np.copy(self.entries)
+        return vector(np.copy(self.entries))
     def norm(self):
         return np.sqrt(self.entries.dot(self.entries.T))
     def dot(self, v):
