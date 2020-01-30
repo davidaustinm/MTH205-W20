@@ -110,7 +110,7 @@ class matrix:
             col = rref[:, f]
             for i, c in np.ndenumerate(basic):
                 b[c] = -col[i]
-            basis.append(b)
+            basis.append(vector(b))
         return basis
 
     def inverse(self):
@@ -150,7 +150,7 @@ class matrix:
         return map(matrix, LA.lu(self.entries))
 
     def QR(self):
-        Q = matrix(gs([vector(c) for c in self.entries.T]))
+        Q = matrix(gs([self.column(c) for c in range(self.cols)])
         R = Q.T*self
         return Q, R
 
