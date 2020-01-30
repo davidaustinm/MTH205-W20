@@ -10,7 +10,7 @@ def gs(basis):
     return onbasis
 
 def projection(b, basis):
-    return vector(np.sum([b*v/(v*v)*v for v in basis]))
+    return np.sum([b*v/(v*v)*v for v in basis])
 
 def unit(v):
     return 1/v.norm()*v
@@ -150,7 +150,7 @@ class matrix:
         return map(matrix, LA.lu(self.entries))
 
     def QR(self):
-        Q = matrix(gs([c for c in self.entries.T]))
+        Q = matrix(gs([vector(c) for c in self.entries.T]))
         R = Q.T*self
         return Q, R
 
