@@ -2,6 +2,19 @@ import numpy as np
 import numpy.linalg as LA
 import matplotlib.pyplot as plt
 
+def gs(basis):
+    onbasis = []
+    for b in basis:
+        if len(onbasis) == 0: onbasis.append(unit(b))
+        else: onbasis.append(unit(b-projection(b, onbasis)))
+    return onbasis
+
+def projection(b, basis):
+    return np.sum([b*v/(v*v)*v for v in basis])
+
+def unit(v):
+    return 1/v.norm()*v
+
 class matrix:
     def __init__(self, *args):
         transpose = True
@@ -231,12 +244,6 @@ def onesvec(n):
 def zerovec(n):
     return vector(np.zeros(n))
 
-def gs(basis):
-    onbasis = []
-    for b in basis:
-        if len(onbasis) == 0: onbasis.append(unit(b))
-        else: onbasis.append(unit(b-projection(b, onbasis)))
-    return onbasis
 
             
 
