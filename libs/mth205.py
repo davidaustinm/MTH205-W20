@@ -137,7 +137,7 @@ class matrix:
         return map(matrix, LA.lu(self.entries))
 
     def print(self, decimals=3):
-        np.set_printoptions(precision = decimals)
+        np.set_printoptions(precision = decimals, suppress=True)
         print(self.entries)
 
     def __add__(self, B):
