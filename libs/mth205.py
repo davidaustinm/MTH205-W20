@@ -137,8 +137,9 @@ class matrix:
         return map(matrix, LA.lu(self.entries))
 
     def QR(self):
-        q, r = LA.qr(self.entries)
-        return matrix(q), matrix(r)
+        Q = matrix(gs([c for c in self.entries.T]))
+        R = Q.T*self
+        return Q, R
 
     def copy(self):
         return matrix(np.copy(self.entries))
