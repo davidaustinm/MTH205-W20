@@ -136,6 +136,10 @@ class matrix:
     def lu(self):
         return map(matrix, LA.lu(self.entries))
 
+    def print(self, decimals=3):
+        np.set_printoptions(precision = decimals)
+        print(self.entries)
+
     def __add__(self, B):
         if isinstance(B, matrix):
             return matrix(self.entries + B.entries)
@@ -217,7 +221,6 @@ def onesvec(n):
 def zerovec(n):
     return vector(np.zeros(n))
 
-    
 
 
 
