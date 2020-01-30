@@ -70,6 +70,7 @@ class matrix:
         for p in range(self.cols):  # look for pivot in column i
             row = len(pivots)
             column = A[row:, p]
+
             index = np.argmax(np.abs(column)) + row
             if A[index, p] == 0:
                 continue
@@ -78,10 +79,12 @@ class matrix:
                 rowi = np.copy(A[index])
                 A[index] = A[row]
                 A[row] = rowi
+            m = A[row,p]
             A[row] = 1/A[row, p] * A[row]
             A[row,np.abs(A[row, :]) < 1e-10] = 0
             for r in range(row+1, self.rows):
                 A[r] -= A[r,p]*A[row]
+                A[r,np.abs(A[r, :]) < 1e-10] = 0
             if pivots[-1] == self.rows - 1:
                 break
         pivots.reverse()
@@ -150,14 +153,18 @@ class matrix:
         return map(matrix, LA.lu(self.entries))
 
     def QR(self):
-        Q = matrix(gs([self.column(c) for c in range(self.cols)])
+        Q = matrix(gs([self.column(c) for c in range(self.cols)])).T
         R = Q.T*self
+
+        q, r = LA.qr(self.entries)
+        Q = matrix(q)
+        R = matrix(r)
         return Q, R
 
     def copy(self):
         return matrix(np.copy(self.entries))
 
-    def print(self, decimals=3):
+    def printf(self, decimals=3):
         np.set_printoptions(precision = decimals, suppress=True)
         print(self.entries)
 
@@ -244,8 +251,27 @@ def onesvec(n):
 def zerovec(n):
     return vector(np.zeros(n))
 
+'''
+v1 = vector([1,0,1,1])
+v2 = vector([0,2,0,3])
+v3 = vector([-3,-1,1,5])
+A = matrix([v1,v2,v3]).T
+Q, R = A.QR()
+#print(Q)
 
-            
+v4 = A.T.right_kernel()[0]
+print(A)
+print('v4=',v4)
+b = A.augment(v4)*vector([2,-1,3,8])
+
+#b = vector([4, -17, -14, 22])
+print(A.T*v4)
+
+print(b)
+
+bhat = Q*Q.T*b
+print(A.augment(bhat).rref())
+'''
 
 
 
