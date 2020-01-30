@@ -231,6 +231,13 @@ def onesvec(n):
 def zerovec(n):
     return vector(np.zeros(n))
 
+def gs(basis):
+    onbasis = []
+    for b in basis:
+        if len(onbasis) == 0: onbasis.append(unit(b))
+        else: onbasis.append(unit(b-projection(b, onbasis)))
+    return onbasis
+
             
 
 
