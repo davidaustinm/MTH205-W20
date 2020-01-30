@@ -18,7 +18,7 @@ class matrix:
         if len(args) == 1:
             if isinstance(args[0],list):  ## list of vectors
                 columns = [v.entries for v in args[0]]
-                self.entries = np.array(columns).T
+                self.entries = np.array(columns)
             else:                         ## numpy array
                 self.entries = args[0]
             shape = np.shape(self.entries)
@@ -216,6 +216,7 @@ def onesvec(n):
 
 def zerovec(n):
     return vector(np.zeros(n))
+
     
 
 
