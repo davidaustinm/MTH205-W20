@@ -136,6 +136,13 @@ class matrix:
     def lu(self):
         return map(matrix, LA.lu(self.entries))
 
+    def QR(self):
+        q, r = LA.qr(self.entries)
+        return matrix(q), matrix(r)
+
+    def copy(self):
+        return matrix(np.copy(self.entries))
+
     def print(self, decimals=3):
         np.set_printoptions(precision = decimals, suppress=True)
         print(self.entries)
@@ -187,6 +194,8 @@ class vector:
         return vector(self.entries + v.entries)
     def __sub__(self, v):
         return vector(self.entries - v.entries)
+    def copy(self):
+        return vector(np.copy(self.entries)
     def norm(self):
         return np.sqrt(self.entries.dot(self.entries.T))
     def dot(self, v):
@@ -221,6 +230,7 @@ def onesvec(n):
 def zerovec(n):
     return vector(np.zeros(n))
 
+            
 
 
 
