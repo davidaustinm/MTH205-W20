@@ -10,7 +10,7 @@ def gs(basis):
     return onbasis
 
 def projection(b, basis):
-    return np.sum([b*v/(v*v)*v for v in basis])
+    return vector(np.sum([b*v/(v*v)*v for v in basis]))
 
 def unit(v):
     return 1/v.norm()*v
