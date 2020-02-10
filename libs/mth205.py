@@ -153,8 +153,8 @@ class matrix:
         return map(matrix, LA.lu(self.entries))
 
     def QR(self):
-        Q = matrix(gs([self.column(c) for c in range(self.cols)])).T
-        R = Q.T*self
+#        Q = matrix(gs([self.column(c) for c in range(self.cols)])).T
+#        R = Q.T*self
 
         q, r = LA.qr(self.entries)
         Q = matrix(q)
@@ -227,6 +227,9 @@ class vector:
     def demean(self):
         return vector(self.entries - self.entries.mean())
 
+    def __getitem__(self, n):
+        return self.entries[n]
+
 def list_plot(data, color="blue", aspect_ratio=None, size=25, dims=None):
     entries = np.array([d.entries for d in data]).T
     if dims != None:
@@ -250,28 +253,6 @@ def onesvec(n):
 
 def zerovec(n):
     return vector(np.zeros(n))
-
-'''
-v1 = vector([1,0,1,1])
-v2 = vector([0,2,0,3])
-v3 = vector([-3,-1,1,5])
-A = matrix([v1,v2,v3]).T
-Q, R = A.QR()
-#print(Q)
-
-v4 = A.T.right_kernel()[0]
-print(A)
-print('v4=',v4)
-b = A.augment(v4)*vector([2,-1,3,8])
-
-#b = vector([4, -17, -14, 22])
-print(A.T*v4)
-
-print(b)
-
-bhat = Q*Q.T*b
-print(A.augment(bhat).rref())
-'''
 
 
 
