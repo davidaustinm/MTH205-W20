@@ -265,7 +265,7 @@ def plot_model(xhat, data, color='blue',
     ploty = np.array([vector([x**j for j in range(k)])*xhat for x in plotx])
     print(plotx.shape, ploty.shape)
     if dims != None:
-        fig,ax = plot.subplots(figsize=dims)
+        fig,ax = plt.subplots(figsize=dims)
     else:
         fig,ax = plt.subplots()
     if aspect_ratio != None:
