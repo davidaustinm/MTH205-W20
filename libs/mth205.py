@@ -226,7 +226,8 @@ class vector:
         matrix([self]).display()
     def demean(self):
         return vector(self.entries - self.entries.mean())
-
+    def dim(self):
+        return len(self.entries)
     def __getitem__(self, n):
         return self.entries[n]
 
@@ -253,6 +254,24 @@ def onesvec(n):
 
 def zerovec(n):
     return vector(np.zeros(n))
+
+def plot_model(xhat, data, color='blue',
+               aspect_ratio = None, size=25, dims=None):
+    entries = np.array([d.entries for d in data]).T
+    max = np.max(entries[0])
+    min = np.min(entries[0])
+    plotx = np.linspace(num=100, start=min, stop=max)
+    k = len(xhat.entries)
+    ploty = np.array([vector([x**j for j in range(k)])*xhat for x in plotx])
+    print(plotx.shape, ploty.shape)
+    if dims != None:
+        fig,ax = plot.subplots(figsize=dims)
+    else:
+        fig,ax = plt.subplots()
+    if aspect_ratio != None:
+        ax.set_aspect(aspect_ratio)
+    ax.scatter(x = entries[0], y = entries[1], c = color, s =size)
+    ax.plot(plotx, ploty, color='red')
 
 
 
