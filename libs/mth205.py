@@ -263,7 +263,6 @@ def plot_model(xhat, data, color='blue',
     plotx = np.linspace(num=100, start=min, stop=max)
     k = len(xhat.entries)
     ploty = np.array([vector([x**j for j in range(k)])*xhat for x in plotx])
-    print(plotx.shape, ploty.shape)
     if dims != None:
         fig,ax = plt.subplots(figsize=dims)
     else:
