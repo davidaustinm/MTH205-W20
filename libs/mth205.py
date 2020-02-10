@@ -274,7 +274,8 @@ def plot_model(xhat, data, color='blue',
     ax.plot(plotx, ploty, color='red')
 
 def vandermonde(data, k):
-    return matrix([ [x**j for j in range(k+1)] for x in data.entries])
+    return matrix([ vector([x**j for j in range(k+1)]) for x in data.entries])
+
 
 
 
