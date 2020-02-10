@@ -256,7 +256,7 @@ def zerovec(n):
     return vector(np.zeros(n))
 
 def plot_model(xhat, data, color='blue',
-               aspect_ratio = None, size=25, dims=None):
+               aspect_ratio = None, size=25, dims=(8,6)):
     entries = np.array([d.entries for d in data]).T
     max = np.max(entries[0])
     min = np.min(entries[0])
