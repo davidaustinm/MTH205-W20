@@ -231,7 +231,8 @@ class vector:
     def __getitem__(self, n):
         return self.entries[n]
 
-def list_plot(data, color="blue", aspect_ratio=None, size=25, dims=(8,6)):
+def list_plot(data, color="blue", aspect_ratio=None, size=25,
+              dims=(8,6), title=None):
     entries = np.array([d.entries for d in data]).T
     if dims != None:
         fig, ax = plt.subplots(figsize=dims)
@@ -239,6 +240,8 @@ def list_plot(data, color="blue", aspect_ratio=None, size=25, dims=(8,6)):
         fig, ax = plt.subplots()
     if aspect_ratio != None:
         ax.set_aspect(aspect_ratio)
+    if title != None:
+        ax.set_title(title)
     ax.scatter(x=entries[0], y=entries[1], c=color, s=size)
 
 def mean(data):
