@@ -231,7 +231,7 @@ class vector:
     def __getitem__(self, n):
         return self.entries[n]
 
-def list_plot(data, color="blue", aspect_ratio=None, size=25, dims=None):
+def list_plot(data, color="blue", aspect_ratio=None, size=25, dims=(8,6)):
     entries = np.array([d.entries for d in data]).T
     if dims != None:
         fig, ax = plt.subplots(figsize=dims)
