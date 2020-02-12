@@ -232,6 +232,7 @@ class vector:
         return self.entries[n]
 
 def list_plot(data, color="blue", aspect_ratio=None, size=25,
+              ylim = None,
               dims=(8,6), title=None):
     entries = np.array([d.entries for d in data]).T
     if dims != None:
@@ -242,6 +243,8 @@ def list_plot(data, color="blue", aspect_ratio=None, size=25,
         ax.set_aspect(aspect_ratio)
     if title != None:
         ax.set_title(title)
+    if ylim != None:
+        ax.set_ylim(ylim)
     ax.scatter(x=entries[0], y=entries[1], c=color, s=size)
 
 def mean(data):
@@ -259,7 +262,10 @@ def zerovec(n):
     return vector(np.zeros(n))
 
 def plot_model(xhat, data, color='blue',
-               aspect_ratio = None, size=25, dims=(8,6)):
+               aspect_ratio = None,
+               title = None,
+               ylim = None,
+               size=25, dims=(8,6)):
     entries = np.array([d.entries for d in data]).T
     max = np.max(entries[0])
     min = np.min(entries[0])
@@ -272,6 +278,10 @@ def plot_model(xhat, data, color='blue',
         fig,ax = plt.subplots()
     if aspect_ratio != None:
         ax.set_aspect(aspect_ratio)
+    if title != None:
+        ax.set_title(title)
+    if ylim != None:
+        ax.set_ylim(ylim)
     ax.scatter(x = entries[0], y = entries[1], c = color, s =size)
     ax.plot(plotx, ploty, color='red')
 
