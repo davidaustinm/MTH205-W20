@@ -49,6 +49,8 @@ class matrix:
     def matrix_from_columns(self, c):
         columns = [self.entries[:, col] for col in c]
         return matrix(np.array(columns).T)
+    def columns(self):
+        return [self.column(j) for j in range(self.cols)]
     def matrix_from_rows(self, r):
         rows = [self.entries[row, :] for row in r]
         return matrix(np.array(rows))
@@ -240,6 +242,8 @@ class vector:
 def list_plot(data, color="blue", aspect_ratio=None, size=25,
               ylim = None,
               dims=(8,6), title=None):
+    if isinstance(data, matrix):
+        data = matrix.columns()
     entries = np.array([d.entries for d in data]).T
     if dims != None:
         fig, ax = plt.subplots(figsize=dims)
