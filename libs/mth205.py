@@ -58,7 +58,10 @@ class matrix:
         return LA.eig(self.entries)[0]
     def right_eigenmatrix(self):
         values, vectors = LA.eig(self.entries)
-        return (values, matrix(vectors))
+        d = np.zeros((len(values), len(values)))
+        for i, v in enumerate(values):
+            d[i][i] = v
+        return (matrix(d), matrix(vectors))
     def det(self):
         return LA.det(self.entries)
     def determinant(self):
@@ -230,6 +233,9 @@ class vector:
         return len(self.entries)
     def __getitem__(self, n):
         return self.entries[n]
+    def printf(self, decimals=3):
+        np.set_printoptions(precision = decimals, suppress=True)
+        print(self.entries.T)
 
 def list_plot(data, color="blue", aspect_ratio=None, size=25,
               ylim = None,
