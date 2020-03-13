@@ -243,7 +243,7 @@ def list_plot(data, color="blue", aspect_ratio=None, size=25,
               ylim = None,
               dims=(8,6), title=None):
     if isinstance(data, matrix):
-        entries = data.entries.T
+        entries = data.entries
     else:
         entries = np.array([d.entries for d in data]).T
     if dims != None:
