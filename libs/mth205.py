@@ -60,10 +60,14 @@ class matrix:
         return LA.eig(self.entries)[0]
     def right_eigenmatrix(self):
         values, vectors = LA.eig(self.entries)
+        order = np.argsort(values)[::-1]
+        d = np.diag(values[order])
+        '''
         d = np.zeros((len(values), len(values)))
         for i, v in enumerate(values):
             d[i][i] = v
-        return (matrix(d), matrix(vectors))
+        '''
+        return (matrix(d), matrix(vectors[order]))
     def det(self):
         return LA.det(self.entries)
     def determinant(self):
