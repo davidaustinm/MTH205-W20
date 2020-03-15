@@ -57,7 +57,9 @@ class matrix:
     def matrix_from_rows_and_columns(self, r, c):
         return self.matrix_from_rows(r).matrix_from_columns(c) 
     def eigenvalues(self):
-        return LA.eig(self.entries)[0]
+        ev = LA.eig(self.entries)[0]
+        order = np.argsort(ev)[::-1]
+        return ev[order]
     def right_eigenmatrix(self):
         values, vectors = LA.eig(self.entries)
         order = np.argsort(values)[::-1]
@@ -67,7 +69,7 @@ class matrix:
         for i, v in enumerate(values):
             d[i][i] = v
         '''
-        return (matrix(d), matrix(vectors[order]))
+        return (matrix(d), matrix(vectors.T[order].T))
     def det(self):
         return LA.det(self.entries)
     def determinant(self):
