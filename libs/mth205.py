@@ -174,7 +174,7 @@ class matrix:
         else:
             fig,ax = plt.subplots()
         ax.set_ylim((0, 1.1*sv[0]))
-        plt.xticks(range(lev(sv)))
+        plt.xticks(range(len(sv)))
         ax.plot(range(len(sv)), sv, c = color)
         ax.scatter(x = range(len(sv)), y = sv, c = color, s = size)
         
