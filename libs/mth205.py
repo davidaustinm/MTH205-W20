@@ -160,6 +160,22 @@ class matrix:
         plt.clim(-1,1)
         plt.show()
 
+    def SVD(self):
+        u, s, vh = LA.svd(self.entries)
+        return matrix(u), matrix(np.diag(s)), matrix(vh.T)
+
+    def singular_values(self):
+        return LA.svd(self.entries, compute_uv = False)
+
+    def plot_sv(self, dims = (8,6), size=25, color='blue'):
+        sv = self.singular_values()
+        if dims != None:
+            fig,ax = plt.subplots(figsize=dims)
+        else:
+            fig,ax = plt.subplots()
+        ax.plot(range(len(sv)), sv, c = color)
+        ax.scatter(x = range(len(sv)), y = sv, c = color, s = size)
+        
     def lu(self):
         return map(matrix, LA.lu(self.entries))
 
