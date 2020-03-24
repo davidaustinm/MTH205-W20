@@ -173,7 +173,7 @@ class matrix:
             fig,ax = plt.subplots(figsize=dims)
         else:
             fig,ax = plt.subplots()
-        ax.set_ylim((0, sv[0]))
+        ax.set_ylim((0, 1.1*sv[0]))
         ax.plot(range(len(sv)), sv, c = color)
         ax.scatter(x = range(len(sv)), y = sv, c = color, s = size)
         
