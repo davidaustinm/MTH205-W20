@@ -161,7 +161,18 @@ class matrix:
 
     def SVD(self):
         u, s, vh = LA.svd(self.entries)
-        return matrix(u), matrix(np.diag(s)), matrix(vh.T)
+        sigma = np.zeros((self.rows, self.cols))
+        r = len(s)
+        sigma[:r, :r] = np.diag(s)
+        return matrix(u), sigma, matrix(vh.T)
+
+    def rank_k_approx(self, k):
+        u, s, vh = LA.svd(self.entries)
+        sigma = np.zeros((self.rows, self.cols))
+        r = np.min([k, len(s)])
+        sigma[:r, :r] = np.diag(s[:r])
+        print(sigma)
+        return matrix(u.dot(sigma.dot(vh)))
 
     def singular_values(self):
         return LA.svd(self.entries, compute_uv = False)
@@ -321,7 +332,4 @@ def plot_model(xhat, data, color='blue',
 
 def vandermonde(data, k):
     return matrix([ vector([x**j for j in range(k+1)]) for x in data.entries])
-
-
-
 
