@@ -1,6 +1,7 @@
 import numpy as np
 import numpy.linalg as LA
 import matplotlib.pyplot as plt
+from PIL import Image
 
 def gs(basis):
     onbasis = []
@@ -158,6 +159,9 @@ class matrix:
         plt.colorbar(orientation="vertical")
         plt.clim(-1,1)
         plt.show()
+
+    def image(self):
+        return Image.fromarray(self.entries.astype('uint8'))
 
     def SVD(self):
         u, s, vh = LA.svd(self.entries)
