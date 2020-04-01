@@ -171,7 +171,6 @@ class matrix:
         sigma = np.zeros((self.rows, self.cols))
         r = np.min([k, len(s)])
         sigma[:r, :r] = np.diag(s[:r])
-        print(sigma)
         return matrix(u.dot(sigma.dot(vh)))
 
     def singular_values(self):
