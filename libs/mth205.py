@@ -249,8 +249,8 @@ class vector:
     def dot(self, v):
         if isinstance(v, vector):
             return self.entries.dot(v.entries.T)
-    def display(self):
-        matrix([self]).display()
+    def display(self, scale=1):
+        matrix([self]).T.display(scale)
     def demean(self):
         return vector(self.entries - self.entries.mean())
     def dim(self):
