@@ -148,7 +148,7 @@ class matrix:
         shape = entries.shape
         max = np.max(np.abs(entries))
         entries = 1/max*entries
-        fig, ax = plt.subplots(figsize=(scale*shape[1], scale*shape[0]))
+        #fig, ax = plt.subplots(figsize=(scale*shape[1], scale*shape[0]))
         fig, ax = plt.subplots(figsize=(8,8))
         plt.imshow(entries, cmap=cm)
         #plt.imshow(entries)
