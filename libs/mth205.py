@@ -164,7 +164,7 @@ class matrix:
         sigma = np.zeros((self.rows, self.cols))
         r = len(s)
         sigma[:r, :r] = np.diag(s)
-        return matrix(u), sigma, matrix(vh.T)
+        return matrix(u), matrix(sigma), matrix(vh.T)
 
     def rank_k_approx(self, k):
         u, s, vh = LA.svd(self.entries)
