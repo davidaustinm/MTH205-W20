@@ -150,7 +150,7 @@ class matrix:
         entries = 1/max*entries
         fig, ax = plt.subplots(figsize=(scale*shape[1], scale*shape[0]))
         plt.imshow(entries, cmap=cm)
-        plt.imshow(entries)
+        #plt.imshow(entries)
         ax.set_aspect(1)
         plt.xticks(range(shape[1]))
         plt.yticks(range(shape[0]))
