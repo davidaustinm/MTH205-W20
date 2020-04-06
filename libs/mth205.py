@@ -140,7 +140,7 @@ class matrix:
     def transpose(self):
         return matrix(self.entries.T)
 
-    def display(self, scale=0.3):
+    def display(self, figsize=(8,8)):
         from matplotlib.colors import LinearSegmentedColormap
         map_colors=[(1,0,0), (0,0,0), (1,1,1)]
         cm = LinearSegmentedColormap.from_list("my_list", map_colors, N=100)
@@ -150,7 +150,7 @@ class matrix:
         max = np.max(np.abs(entries))
         entries = 1/max*entries
         #fig, ax = plt.subplots(figsize=(scale*shape[1], scale*shape[0]))
-        fig, ax = plt.subplots(figsize=(8,8))
+        fig, ax = plt.subplots(figsize=figsize)
         plt.imshow(entries, cmap=cm)
         #plt.imshow(entries)
         ax.set_aspect(1)
@@ -264,8 +264,8 @@ class vector:
     def dot(self, v):
         if isinstance(v, vector):
             return self.entries.dot(v.entries.T)
-    def display(self, scale=0.4):
-        matrix([self]).T.display(scale)
+    def display(self, figsize=(8,8)):
+        matrix([self]).T.display(figsize=figsize)
     def demean(self):
         return vector(self.entries - self.entries.mean())
     def dim(self):
