@@ -180,13 +180,16 @@ class matrix:
     def singular_values(self):
         return LA.svd(self.entries, compute_uv = False)
 
-    def plot_sv(self, dims = (8,6), size=25, color='blue'):
+    def plot_sv(self, dims = (8,6), size=25, color='blue', ylim=None):
         sv = self.singular_values()
         if dims != None:
             fig,ax = plt.subplots(figsize=dims)
         else:
             fig,ax = plt.subplots()
-        ax.set_ylim((0, 1.1*sv[0]))
+        if ylim == None:
+            ax.set_ylim((0, 1.1*sv[0]))
+        else:
+            ax.set_ylim(ylim)
         plt.xticks(range(len(sv)))
         ax.plot(range(len(sv)), sv, c = color)
         ax.scatter(x = range(len(sv)), y = sv, c = color, s = size)
