@@ -339,3 +339,6 @@ def plot_model(xhat, data, color='blue',
 def vandermonde(data, k):
     return matrix([ vector([x**j for j in range(k+1)]) for x in data.entries])
 
+def outer(u, v):
+    return matrix([u]).T * matrix([v])
+
