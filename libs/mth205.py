@@ -317,6 +317,8 @@ def plot_model(xhat, data, color='blue',
                title = None,
                ylim = None,
                size=25, dims=(8,6)):
+    if isinstance(data, matrix):
+        data = data.columns()
     entries = np.array([d.entries for d in data]).T
     max = np.max(entries[0])
     min = np.min(entries[0])
