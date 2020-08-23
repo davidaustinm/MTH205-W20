@@ -2,6 +2,7 @@ import numpy as np
 import numpy.linalg as LA
 import matplotlib.pyplot as plt
 from PIL import Image
+import scipy.linalg as linalg
 
 def gs(basis):
     onbasis = []
@@ -195,7 +196,7 @@ class matrix:
         ax.scatter(x = range(len(sv)), y = sv, c = color, s = size)
         
     def lu(self):
-        return map(matrix, LA.lu(self.entries))
+        return map(matrix, linalg.lu(self.entries))
 
     def QR(self):
 #        Q = matrix(gs([self.column(c) for c in range(self.cols)])).T
