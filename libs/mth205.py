@@ -196,7 +196,7 @@ class matrix:
         ax.scatter(x = range(len(sv)), y = sv, c = color, s = size)
         
     def lu(self):
-        return map(matrix, linalg.lu(self.entries))
+        return list(map(matrix, linalg.lu(self.entries)))
 
     def QR(self):
 #        Q = matrix(gs([self.column(c) for c in range(self.cols)])).T
