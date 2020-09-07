@@ -307,6 +307,10 @@ def mean(data):
         return np.mean(data.entries)
     return np.mean(data)
 
+def identity_matrix(k):
+    id=np.identity(k)
+    return matrix(id)
+
 def onesvec(n):
     return vector(np.ones(n))
 
