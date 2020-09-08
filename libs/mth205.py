@@ -311,6 +311,9 @@ def identity_matrix(k):
     id=np.identity(k)
     return matrix(id)
 
+def identity(k):
+    return identity_matrix(k)
+
 def onesvec(n):
     return vector(np.ones(n))
 
