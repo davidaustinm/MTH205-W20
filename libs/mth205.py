@@ -49,6 +49,14 @@ class matrix:
         return vector(self.entries[:, c])
     def row(self, r):
         return vector(self.entries[r, :])
+
+    def dim(self):
+        return self.entries.shape
+    def dims(self):
+        return self.dim()
+    def trace(self):
+        n = min(self.rows, self.cols)
+        return np.sum([self.entries[i,i] for i in range(n)])
     def matrix_from_columns(self, c):
         columns = [self.entries[:, col] for col in c]
         return matrix(np.array(columns).T)
@@ -352,6 +360,4 @@ def vandermonde(data, k):
 
 def outer(u, v):
     return matrix([u]).T * matrix([v])
-
-
 
