@@ -216,6 +216,9 @@ class matrix:
         R = matrix(r)
         return Q, R
 
+    def rank(self):
+        return np.linalg.matrix_rank(self.entries)
+
     def copy(self):
         return matrix(np.copy(self.entries))
 
