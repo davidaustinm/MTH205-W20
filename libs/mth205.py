@@ -280,7 +280,7 @@ class vector:
     def dot(self, v):
         if isinstance(v, vector):
             return self.entries.dot(v.entries.T)
-    def display(self, figsize=(6,6)):
+    def display(self, figsize=(5,5)):
         matrix([self]).T.display(figsize=figsize)
     def demean(self):
         return vector(self.entries - self.entries.mean())
