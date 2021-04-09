@@ -150,7 +150,7 @@ class matrix:
     def transpose(self):
         return matrix(self.entries.T)
 
-    def display(self, figsize=(8,8)):
+    def display(self, figsize=(6,6)):
         from matplotlib.colors import LinearSegmentedColormap
         map_colors=[(1,0,0), (0,0,0), (1,1,1)]
         cm = LinearSegmentedColormap.from_list("my_list", map_colors, N=100)
@@ -280,7 +280,7 @@ class vector:
     def dot(self, v):
         if isinstance(v, vector):
             return self.entries.dot(v.entries.T)
-    def display(self, figsize=(8,8)):
+    def display(self, figsize=(6,6)):
         matrix([self]).T.display(figsize=figsize)
     def demean(self):
         return vector(self.entries - self.entries.mean())
