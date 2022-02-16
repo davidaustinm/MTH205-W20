@@ -39,10 +39,10 @@ class matrix:
             shape = np.shape(self.entries)
             self.rows = shape[0]
             self.cols = shape[1]
-            print(self.entries)
-            print(self.entries.dtype)
             if np.can_cast(self.entries.dtype, np.float64):
                 self.entries = self.entries.astype('float64')
+            print(self.entries)
+            print(self.entries.dtype)
         if transpose:
             self.T = matrix(self.entries.T, False)
             self.T.T = self
