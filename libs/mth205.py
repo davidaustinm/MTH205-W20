@@ -28,6 +28,7 @@ class matrix:
             cols = args[1]
             entries = args[2]
             self.entries = np.reshape(entries, (rows, cols))
+            self.entries = self.entries.astype('float64')
             self.rows = rows
             self.cols = cols
         if len(args) == 1:
