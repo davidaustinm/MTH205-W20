@@ -3,6 +3,7 @@ import numpy.linalg as LA
 import matplotlib.pyplot as plt
 from PIL import Image
 import scipy.linalg as linalg
+import pandas as pd
 
 def gs(basis):
     onbasis = []
@@ -32,11 +33,16 @@ class matrix:
             self.rows = rows
             self.cols = cols
         if len(args) == 1:
-            if isinstance(args[0],list):  ## list of vectors
+            ## data frame
+            if isinstance(args[0], pd.DataFrame):
+                self.entries = args[0].to_numpy()
+            ## list of vectors
+            elif isinstance(args[0],list) and isinstance(args[0][0],vector):
                 columns = [v.entries for v in args[0]]
                 self.entries = np.array(columns)
-            else:                         ## numpy array
-                self.entries = args[0]
+            ## 2d-array, maybe numpy
+            else:                   
+                self.entries = np.array(args[0])
             shape = np.shape(self.entries)
             self.rows = shape[0]
             self.cols = shape[1]
