@@ -267,6 +267,7 @@ class matrix:
 class vector:
     def __init__(self, entries):
         self.entries = np.array(entries)
+        self.T = matrix([self.entries])
     def __str__(self):
         return str(self.entries)
     def __repr__(self):
