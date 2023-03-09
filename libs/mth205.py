@@ -299,6 +299,10 @@ class vector:
     def printf(self, decimals=3):
         np.set_printoptions(precision = decimals, suppress=True)
         print(self.entries.T)
+    def mean(self):
+        return np.mean(self.entries)
+    def variance(self):
+        return np.var(self.entries)
 
 def list_plot(data, color="blue", aspect_ratio=None, size=25,
               ylim = None,
