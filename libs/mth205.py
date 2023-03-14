@@ -303,6 +303,8 @@ class vector:
         return np.mean(self.entries)
     def variance(self):
         return np.var(self.entries)
+    def concat(self, v):
+        return vector(list(self.entries) + list(v.entries))
 
 def list_plot(data, color="blue", aspect_ratio=None, size=25,
               ylim = None,
