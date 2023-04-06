@@ -79,14 +79,12 @@ class matrix:
         order = np.argsort(ev)[::-1]
         return ev[order]
     def right_eigenmatrix(self):
-        values, vectors = LA.eig(self.entries)
+        if np.allclose(self.entries, self.entries.T):
+            values, vectors = LA.eigh(self.entries)
+        else:
+            values, vectors = LA.eig(self.entries)
         order = np.argsort(values)[::-1]
         d = np.diag(values[order])
-        '''
-        d = np.zeros((len(values), len(values)))
-        for i, v in enumerate(values):
-            d[i][i] = v
-        '''
         return (matrix(d), matrix(vectors.T[order].T))
     def det(self):
         return LA.det(self.entries)
