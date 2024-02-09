@@ -11,9 +11,7 @@ setup(
     version="0.0.2.dev1",
     url="https://github.com/davidaustinm/MTH205-W20",
     author="GVSU MTH205",
-    packages=find_packages(
-        include='mth205'
-    ),
+    packages=find_packages(),
     install_requires=[
         "numpy",
         "matplotlib",
