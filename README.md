@@ -3,6 +3,22 @@
 
 This guide provides instructions on how to install and import the `mth205` module in a Jupyter Notebook. The `mth205` module is designed to support various mathematical operations and is hosted on GitHub. Follow the steps below to install it directly from the repository and use it in your Jupyter Notebook.
 
+## Using mth205 in Jupyter Notebook with Google CoLab
+
+1. **Launch Jupyter Notebook in Google Colab**
+
+2. **Pip install the `mth205` module** at the beginning of your notebook with the following Python code:
+
+```bash
+!pip install git+https://github.com/jdenhof/mth205-W20.git@pip_installable#egg=mth205
+```
+
+```python
+from mth205 import *
+```
+
+Now, you are ready to use the functionalities provided by the `mth205` module in your Jupyter Notebook.
+
 ## Prerequisites
 - Python 3.6 or higher
 - pip (Python package installer)
@@ -38,7 +54,7 @@ pip install git+https://github.com/jdenhof/mth205-W20.git@pip_installable#egg=mt
 This command tells pip to install the `mth205` module from the specified Git repository and branch (`pip_installable`).
 The above will need to updated when merged into main repository.
 
-## Using mth205 in Jupyter Notebook
+## Using mth205 in Jupyter Notebook locally
 
 After installing the `mth205` module, you can use it in a Jupyter Notebook by following these steps:
 
