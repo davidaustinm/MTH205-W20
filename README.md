@@ -10,7 +10,7 @@ This guide provides instructions on how to install and import the `mth205` modul
 2. **Pip install the `mth205` module** at the beginning of your notebook with the following Python code:
 
 ```bash
-!pip install git+https://github.com/jdenhof/mth205-W20.git@pip_installable#egg=mth205
+!pip install git+https://github.com/davidaustinm/mth205-W20.git@pip_installable#egg=mth205
 ```
 
 ```python
@@ -48,7 +48,7 @@ pip install jupyterlab
 4. **Install the `mth205` module** directly from GitHub by running the following command:
 
 ```bash
-pip install git+https://github.com/jdenhof/mth205-W20.git@pip_installable#egg=mth205
+pip install git+https://github.com/davidaustinm/mth205-W20.git@pip_installable#egg=mth205
 ```
 
 This command tells pip to install the `mth205` module from the specified Git repository and branch (`pip_installable`).
