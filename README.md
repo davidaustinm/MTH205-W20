@@ -48,7 +48,7 @@ pip install jupyterlab
 4. **Install the `mth205` module** directly from GitHub by running the following command:
 
 ```bash
-pip install git+https://github.com/jdenhof/mth205-W20.git@pip_installable#egg=mth205
+pip install git+https://github.com/davidaustinm/mth205-W20.git#egg=mth205
 ```
 
 This command tells pip to install the `mth205` module from the specified Git repository and branch (`pip_installable`).
