@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "gv-linalg"
-version = "0.1.0"
+version = "0.1.4"
 description = "Some tools for accessing numpy using Sage-like syntax"
 repository = "https://github.com/davidaustinm/MTH205-W20"
 authors = ["David Austin <david.austin.m@gmail.com>"]
@@ -8,8 +8,8 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-numpy = "^1.26.4"
-scipy = "^1.13.1"
+numpy = "^2.0"
+scipy = "^1.15"
 matplotlib = "^3.8.0"
 pandas = "^2.2.2"
 
