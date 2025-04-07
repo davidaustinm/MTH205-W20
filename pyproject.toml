@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "gv-linalg"
-version = "0.1.4"
+version = "0.1.5"
 description = "Some tools for accessing numpy using Sage-like syntax"
 repository = "https://github.com/davidaustinm/MTH205-W20"
 authors = ["David Austin <david.austin.m@gmail.com>"]
