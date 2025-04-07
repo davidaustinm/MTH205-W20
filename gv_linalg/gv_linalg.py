@@ -288,6 +288,8 @@ class vector:
         return vector(self.entries + v.entries)
     def __sub__(self, v):
         return vector(self.entries - v.entries)
+    def __getitem__(self, key):
+        return self.entries[key]
     def copy(self):
         return vector(np.copy(self.entries))
     def norm(self):
