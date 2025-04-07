@@ -251,6 +251,8 @@ class matrix:
         return str(self.entries)
     def __repr__(self):
         return str(self.entries)
+    def __getitem__(self, key):
+        return self.entries[key]
 
     def __pow__(self, n):
         if isinstance(n, int):
