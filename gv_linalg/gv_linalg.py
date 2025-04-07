@@ -56,7 +56,10 @@ class matrix:
         return vector(self.entries[:, c])
     def row(self, r):
         return vector(self.entries[r, :])
-
+    def nrows(self):
+        return self.entries.shape[0]
+    def ncols(self):
+        return self.entries.shape[1]
     def dim(self):
         return self.entries.shape
     def dims(self):
@@ -248,6 +251,10 @@ class matrix:
         return str(self.entries)
     def __repr__(self):
         return str(self.entries)
+
+    def __pow__(self, n):
+        if isinstance(n, int):
+            return self.__xor__(n)
 
     def __xor__(self, n):
         if isinstance(n, int):
